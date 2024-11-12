@@ -1,20 +1,11 @@
 import streamlit as st
+import pickle
 import numpy as np
-import cloudpickle
 
-# Define the load_model function with a parameter (file_path) for the file name
-def load_model(file_path):
-    try:
-        # Attempt to load with joblib
-        return joblib.load(file_path)
-    except:
-        # If joblib fails, try loading with cloudpickle
-        with open(file_path, "rb") as f:
-            return cloudpickle.load(f)
-
-# Specify the model file path
-model_file = 'trained_rf_model.pkl'  # or 'trained_rf_model.joblib' if using joblib
-model = load_model(model_file)
+# Load the pre-trained Random Forest model using pickle
+model_file = 'trained_rf_model.pkl'
+with open(model_file, 'rb') as f:
+    model = pickle.load(f)
 
 # Streamlit App Title and Description
 st.title("Credit Card Fraud Detection App")
