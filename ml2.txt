@@ -1,4 +1,6 @@
+pandas
 streamlit
 cloudpickle
 numpy
 scikit-learn
+randomforest
