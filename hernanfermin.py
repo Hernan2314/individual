@@ -3,18 +3,18 @@ import joblib
 import numpy as np
 import cloudpickle
 
-# Define the load_model function with a fallback to cloudpickle
-def load_model('trained_rf_model.pkl'):
+# Define the load_model function with a parameter (file_path) for the file name
+def load_model(file_path):
     try:
         # Attempt to load with joblib
-        return joblib.load('trained_rf_model.pkl')
+        return joblib.load(file_path)
     except:
         # If joblib fails, try loading with cloudpickle
         with open(file_path, "rb") as f:
             return cloudpickle.load(f)
 
-# Specify the model file (change to 'trained_rf_model.joblib' if using joblib)
-model_file = 'trained_rf_model.pkl'
+# Specify the model file path
+model_file = 'trained_rf_model.pkl'  # or 'trained_rf_model.joblib' if using joblib
 model = load_model(model_file)
 
 # Streamlit App Title and Description
